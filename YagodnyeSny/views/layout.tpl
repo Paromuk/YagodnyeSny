@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - My Bottle Application</title>
+    <title>{{ title or 'Ягодные сны' }} - Ягодная ферма</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
@@ -18,23 +18,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="/" class="navbar-brand">Application name</a>
+                <a href="/" class="navbar-brand">
+                    <span style="font-size: 1.2rem;">🍓</span> Ягодные сны
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li {{ 'class=active' if active_page == 'home' else '' }}>
+                        <a href="/">Главная</a></li>
+                    <li {{ 'class=active' if active_page == 'about' else '' }}>
+                        <a href="/about">О ферме</a></li>
+                    <li {{ 'class=active' if active_page == 'jobs' else '' }}>
+                        <a href="/jobs">Вакансии</a></li>
+                    <li {{ 'class=active' if active_page == 'contacts' else '' }}>
+                        <a href="/contacts">Контакты</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
+        <h1>{{ title or 'Ягодные сны' }}</h1>
         {{!base}}
         <hr />
         <footer>
-            <p>&copy; {{ year }} - My Bottle Application</p>
+            <p>&copy; {{ year }} - Ягодная ферма "Ягодные сны"</p>
+            <p class="text-muted">Учебный проект.</p>
         </footer>
     </div>
 
@@ -44,3 +53,4 @@
 
 </body>
 </html>
+
