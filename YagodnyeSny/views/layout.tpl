@@ -6,7 +6,27 @@
     <title>{{ title or 'Ягодные сны' }} - Ягодная ферма</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container.body-content {
+            flex: 1;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,33 +44,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li {{ 'class=active' if active_page == 'home' else '' }}>
+                    <li {{ 'class="active"' if active_page == 'home' else '' }}>
                         <a href="/">Главная</a></li>
-                    <li {{ 'class=active' if active_page == 'about' else '' }}>
+                    <li {{ 'class="active"' if active_page == 'about' else '' }}>
                         <a href="/about">О ферме</a></li>
-                    <li {{ 'class=active' if active_page == 'jobs' else '' }}>
+                    <li {{ 'class="active"' if active_page == 'jobs' else '' }}>
                         <a href="/jobs">Вакансии</a></li>
-                    <li {{ 'class=active' if active_page == 'contacts' else '' }}>
+                    <li {{ 'class="active"' if active_page == 'contacts' else '' }}>
                         <a href="/contacts">Контакты</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="container body-content">
-        <h1>{{ title or 'Ягодные сны' }}</h1>
-        {{!base}}
-        <hr />
-        <footer>
-            <p>&copy; {{ year }} - Ягодная ферма "Ягодные сны"</p>
-            <p class="text-muted">Учебный проект.</p>
-        </footer>
-    </div>
+    {{!base}}
 
     <script src="/static/scripts/jquery-1.10.2.js"></script>
     <script src="/static/scripts/bootstrap.js"></script>
     <script src="/static/scripts/respond.js"></script>
-
 </body>
 </html>
-

@@ -1,15 +1,18 @@
 ﻿import bottle
 import os
-from bottle import route, run, template, static_file
+from bottle import route, run, view, template, static_file
 from datetime import datetime
 
 @route('/')
+@view('layout')
 def index():
     """Главная страница"""
-    return template('index', 
-                   title='Главная',
-                   year=datetime.now().year,
-                   active_page='home')
+    return{
+        'title': 'Главная',
+        'active_page': 'home',
+        'year':datetime.now().year,
+        'base':template('index')
+        }
 
 @route('/about')
 def about():
