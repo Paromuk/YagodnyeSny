@@ -18,7 +18,8 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>YagodnyeSny</Name>
     <RootNamespace>YagodnyeSny</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.13</InterpreterId>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,14 @@
     <Content Include="static\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="static\images\pole.jpg" />
     <Content Include="static\images\zeml.jpg" />
+    <Content Include="static\images\голубика_наши_ягоды.jpg" />
+    <Content Include="static\images\джем.jpg" />
+    <Content Include="static\images\клубника_грядка.jpg" />
+    <Content Include="static\images\клубника_наши_ягоды.jpg" />
+    <Content Include="static\images\лавка_ягод.jpg" />
+    <Content Include="static\images\малина_наши_ягоды.jpg" />
+    <Content Include="static\images\объём_ягод.jpg" />
+    <Content Include="static\images\разделитель_бант.jpg" />
     <Content Include="static\scripts\bootstrap.js" />
     <Content Include="static\scripts\bootstrap.min.js" />
     <Content Include="static\scripts\jquery-1.10.2.intellisense.js" />
@@ -84,6 +93,10 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.13" />
+    <InterpreterReference Include="Global|VisualStudio|Python313" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

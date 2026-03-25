@@ -13,7 +13,7 @@ def home():
     return dict(
         year=datetime.now().year
     )
-
+поч
 @route('/contact')
 @view('contact')
 def contact():

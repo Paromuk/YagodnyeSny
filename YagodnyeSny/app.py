@@ -22,6 +22,7 @@ def about():
                    year=datetime.now().year,
                    active_page='about')
 
+
 @route('/jobs')
 def jobs():
     """Страница 'Вакансии'"""
