@@ -192,3 +192,91 @@ input[type="checkbox"].input-validation-error {
 .navbar-toggle:hover {
     background-color: rgba(255,255,240,0.1) !important;
 }
+
+/* ===== —“–¿Õ»÷¿  ŒÕ“¿ “Œ¬ ===== */
+
+.contacts-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+    .contacts-container h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 48px;
+        color: #3f5e3f;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+.contact-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.contact-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #3f5e3f;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.contact-card p {
+    font-family: 'Roboto', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.contact-card a {
+    color: #b85c1a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .contact-card a:hover {
+        text-decoration: underline;
+    }
+
+.map-container {
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .contacts-grid {
+        gap: 20px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contacts-container h1 {
+        font-size: 36px;
+    }
+}

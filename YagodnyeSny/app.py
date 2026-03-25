@@ -15,28 +15,34 @@ def index():
         }
 
 @route('/about')
+@view('layout')
 def about():
-    """Страница 'О ферме'"""
-    return template('about', 
-                   title='О ферме',
-                   year=datetime.now().year,
-                   active_page='about')
+    return {
+        'title': 'О ферме',
+        'active_page': 'about',
+        'year': 2026,
+        'base': template('about')
+    }
 
 @route('/jobs')
+@view('layout')
 def jobs():
-    """Страница 'Вакансии'"""
-    return template('jobs', 
-                   title='Вакансии',
-                   year=datetime.now().year,
-                   active_page='jobs')
+    return {
+        'title': 'Вакансии',
+        'active_page': 'jobs',
+        'year': 2026,
+        'base': template('jobs')
+    }
 
 @route('/contacts')
+@view('layout')
 def contacts():
-    """Страница 'Контакты'"""
-    return template('contacts', 
-                   title='Контакты',
-                   year=datetime.now().year,
-                   active_page='contacts')
+    return {
+        'title': 'Контакты',
+        'active_page': 'contacts',
+        'year': 2026,
+        'base': template('contacts')
+    }
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
