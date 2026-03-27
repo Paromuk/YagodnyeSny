@@ -583,10 +583,12 @@ body {
     }
 
 .jobs-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     gap: 2rem;
     padding-bottom: 4rem;
+    flex-wrap: wrap;
 }
 
 .job-card {
@@ -595,6 +597,9 @@ body {
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: transform 0.3s ease;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
 }
 
     .job-card:hover {
