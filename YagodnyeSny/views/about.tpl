@@ -69,10 +69,6 @@
         </div>
     </div>
 
-    <!-- Декоративный разделитель -->
-    <div class="divider">
-        <img src="/static/images/разделитель_бант.jpg" alt="Разделитель">
-    </div>
 
     <!-- Наши ягоды -->
     <div class="about-card">
@@ -110,10 +106,6 @@
         </div>
     </div>
 
-    <!-- Декоративный разделитель -->
-    <div class="divider">
-        <img src="/static/images/разделитель_бант.jpg" alt="Разделитель">
-    </div>
 
     <!-- Сорта и производство -->
     <div class="about-card">
@@ -141,10 +133,6 @@
         </div>
     </div>
 
-    <!-- Декоративный разделитель -->
-    <div class="divider">
-        <img src="/static/images/разделитель_бант.jpg" alt="Разделитель">
-    </div>
 
     <!-- Переработка (с изображением) -->
     <div class="about-card feature-card">
