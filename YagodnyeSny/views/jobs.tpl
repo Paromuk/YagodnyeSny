@@ -1,6 +1,4 @@
-﻿
-
-<link rel="stylesheet" type="text/css" href="/static/content/site.css"/>
+﻿<link rel="stylesheet" type="text/css" href="/static/content/site.css"/>
 
 <div class="container">
     <div class="jobs-header">
