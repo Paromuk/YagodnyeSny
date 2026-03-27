@@ -281,8 +281,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 
-/* ===== СТРАНИЦА "О ФЕРМЕ" ===== */
-/* ===== ОСНОВНЫЕ СТИЛИ ===== */
+/* ===== СТРАНИЦА ОСНОВЫ "О ФЕРМЕ" ===== */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -645,133 +644,7 @@ body {
         background-color: #1e3a1f;
     }
 
-/* ===== СТРАНИЦА "КОНТАКТЫ" ===== */
-.contacts-header {
-    text-align: center;
-    padding: 3rem 0;
-}
 
-    .contacts-header h1 {
-        font-size: 2.5rem;
-        color: #2c5e2e;
-        margin-bottom: 0.5rem;
-    }
-
-.contacts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    padding-bottom: 4rem;
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.contact-item {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-}
-
-.contact-icon {
-    font-size: 2rem;
-}
-
-.contact-item h3 {
-    color: #2c5e2e;
-    margin-bottom: 0.5rem;
-}
-
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-
-    .contact-form h3 {
-        color: #2c5e2e;
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        font-family: inherit;
-    }
-
-    .contact-form textarea {
-        resize: vertical;
-    }
-
-.btn-submit {
-    background: #2c5e2e;
-    color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-}
-
-    .btn-submit:hover {
-        background: #1e3a1f;
-    }
-
-.map {
-    padding-bottom: 4rem;
-}
-
-    .map h3 {
-        color: #2c5e2e;
-        margin-bottom: 1rem;
-    }
-
-.map-placeholder {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-
-/* ===== ПОДВАЛ ===== */
-footer {
-    background: linear-gradient(135deg, #1e3a1f 0%, #2c5e2e 100%);
-    color: white;
-    margin-top: 3rem;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.footer-section h3,
-.footer-section h4 {
-    margin-bottom: 1rem;
-}
-
-.footer-section p {
-    line-height: 1.8;
-    opacity: 0.9;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
 
 /* ===== АДАПТИВНОСТЬ (ЕДИНЫЙ БЛОК) ===== */
 @media (max-width: 768px) {
