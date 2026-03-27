@@ -7,7 +7,7 @@
 
 <div class="container">
     <!-- О ферме -->
-    <div class="about-card">
+    <div class="about-card feature-card">
         <h2 class="about-card__title">О ферме</h2>
         <div class="about-card__content">
             <div class="about-flex-container">
@@ -71,7 +71,7 @@
 
 
     <!-- Наши ягоды -->
-    <div class="about-card">
+    <div class="about-card feature-card">
         <h2 class="about-card__title">Наши ягоды</h2>
         <div class="about-card__content">
             <div class="berries-showcase">
@@ -108,7 +108,7 @@
 
 
     <!-- Сорта и производство -->
-    <div class="about-card">
+    <div class="about-card feature-card">
         <h2 class="about-card__title">Сорта и производство</h2>
         <div class="about-card__content">
             <div class="about-two-columns">
