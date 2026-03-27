@@ -1,10 +1,7 @@
 ﻿<!--
     Страница "О ферме"
     Использует стили из stile.txt
-    Адаптирована под общий дизайн проекта
 -->
-<link rel="stylesheet" type="text/css" href="/static/content/site.css"/>
-
 <div class="container">
     <!-- О ферме -->
     <div class="about-card feature-card">
@@ -69,7 +66,6 @@
         </div>
     </div>
 
-
     <!-- Наши ягоды -->
     <div class="about-card feature-card">
         <h2 class="about-card__title">Наши ягоды</h2>
@@ -106,7 +102,6 @@
         </div>
     </div>
 
-
     <!-- Сорта и производство -->
     <div class="about-card feature-card">
         <h2 class="about-card__title">Сорта и производство</h2>
@@ -133,8 +128,7 @@
         </div>
     </div>
 
-
-    <!-- Переработка (с изображением) -->
+    <!-- Переработка -->
     <div class="about-card feature-card">
         <div class="feature-content">
             <div class="feature-text">

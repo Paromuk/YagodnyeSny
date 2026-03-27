@@ -458,7 +458,7 @@ body {
         margin-bottom: 0;
     }
 
-/* ===== НОВЫЕ СЕКЦИИ С ИЗОБРАЖЕНИЯМИ ===== */
+/* ===== СЕКЦИИ С ИЗОБРАЖЕНИЯМИ И ТЕКСТА НА ОДНОЙ ГОРИЗОНТАЛЕ ===== */
 .feature-card {
     margin-bottom: 40px;
     transition: transform 0.3s ease;
