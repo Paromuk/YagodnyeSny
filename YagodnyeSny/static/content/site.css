@@ -413,14 +413,14 @@ body {
 }
 
 .berry-name {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: #3f5e3f;
     margin: 10px 0 5px;
     font-weight: 600;
 }
 
 .berry-desc {
-    font-size: 0.85rem;
+    font-size: 1.2 rem;
     color: #666;
 }
 
