@@ -295,7 +295,7 @@ body {
     padding: 0 20px;
 }
 
-/* ===== СТРАНИЦА "О ФЕРМЕ" ===== */
+/* Карточки для страницы "О ферме" */
 .about-card {
     background: white;
     border-radius: 30px;
@@ -695,12 +695,4 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .contact-item {
-        justify-content: center;
-    }
 }
