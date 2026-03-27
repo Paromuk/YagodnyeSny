@@ -281,7 +281,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 
-/* ===== СТРАНИЦА ОСНОВЫ "О ФЕРМЕ" ===== */
+/* ===== СТРАНИЦА "О ФЕРМЕ" ===== */
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -371,17 +371,6 @@ body {
 
     .rounded-square-img:hover {
         transform: scale(1.03);
-    }
-
-/* Разделитель */
-.divider {
-    text-align: center;
-    margin: 20px 0;
-}
-
-    .divider img {
-        width: 200px;
-        height: auto;
     }
 
 /* Ягоды */
