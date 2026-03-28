@@ -1,23 +1,53 @@
-"""
-This script runs the application using a development server.
-"""
-
-import bottle
+﻿import bottle
 import os
-import sys
+from bottle import route, run, view, template, static_file
+from datetime import datetime
 
-# routes contains the HTTP handlers for our server and must be imported.
-import routes
+@route('/')
+@view('layout')
+def index():
+    """Главная страница"""
+    return{
+        'title': 'Главная',
+        'active_page': 'home',
+        'year':datetime.now().year,
+        'base':template('index')
+        }
 
-if '--debug' in sys.argv[1:] or 'SERVER_DEBUG' in os.environ:
-    # Debug mode will enable more verbose output in the console window.
-    # It must be set at the beginning of the script.
-    bottle.debug(True)
+@route('/about')
+@view('layout')
+def about():
+    return {
+        'title': 'О ферме',
+        'active_page': 'about',
+        'year': 2026,
+        'base': template('about')
+    }
 
-def wsgi_app():
-    """Returns the application to make available through wfastcgi. This is used
-    when the site is published to Microsoft Azure."""
-    return bottle.default_app()
+@route('/jobs')
+@view('layout')
+def jobs():
+    return {
+        'title': 'Вакансии',
+        'active_page': 'jobs',
+        'year': 2026,
+        'base': template('jobs')
+    }
+
+@route('/contacts')
+@view('layout')
+def contacts():
+    return {
+        'title': 'Контакты',
+        'active_page': 'contacts',
+        'year': 2026,
+        'base': template('contacts')
+    }
+
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='./static')
+
 
 if __name__ == '__main__':
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -35,5 +65,4 @@ if __name__ == '__main__':
         the server should be configured to serve the static files."""
         return bottle.static_file(filepath, root=STATIC_ROOT)
 
-    # Starts a local test server.
     bottle.run(server='wsgiref', host=HOST, port=PORT)

@@ -1,4 +1,4 @@
-body {
+﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -39,4 +39,660 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+.hero-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background: url('/static/images/pole.jpg') center/cover no-repeat;
+    padding: 60px 40px;
+    min-height: 100vh;
+    position: relative;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+    .hero-section .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 240, 0.85);
+    }
+
+    .hero-section .left-col {
+        flex: 1.3;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+        .hero-section .left-col img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+    .hero-section .right-col {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+        padding: 10px;
+    }
+
+    .hero-section h1 {
+        font: 700 56px/1.2 'Playfair Display', serif;
+        color: #3f5e3f;
+        margin: 0 0 15px 0;
+        letter-spacing: 2px;
+    }
+
+    .hero-section .slogan {
+        font: 600 32px/1.2 'Caveat', cursive;
+        color: #b85c1a;
+        margin: 0 0 25px 0;
+    }
+
+    .hero-section .description {
+        font: 400 18px/1.6 'Roboto', sans-serif;
+        color: #4a4a4a;
+        margin: 0 0 30px 0;
+        max-width: 450px;
+    }
+
+    .hero-section .btn-learn {
+        display: inline-block;
+        font: 500 16px/1 'Montserrat', sans-serif;
+        color: #fff;
+        background: #b85c1a;
+        padding: 12px 35px;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+        .hero-section .btn-learn:hover {
+            background: #9a4a12;
+            transform: translateY(-2px);
+        }
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+        .hero-section h1 {
+            font-size: 40px;
+        }
+
+        .hero-section .slogan {
+            font-size: 24px;
+        }
+}
+/* ===== ШАПКА ===== */
+
+.navbar {
+    background-color: #3f5e3f !important;
+    border-bottom: 2px solid #b85c1a;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-brand {
+    color: #ffffff !important;
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar-brand:hover {
+    color: #f5e6d3 !important;
+}
+
+.navbar .nav > li > a {
+    color: #f5e6d3 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav > li > a:hover {
+    color: #ffffff !important;
+    background-color: rgba(255,255,240,0.1) !important;
+}
+
+.navbar .nav > li.active > a {
+    color: #ffffff !important;
+    background-color: rgba(255,255,240,0.15) !important;
+    position: relative;
+}
+
+.navbar .nav > li.active > a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background-color: #b85c1a;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+.navbar-toggle:hover {
+    background-color: rgba(255,255,240,0.1) !important;
+}
+
+/* ===== СТРАНИЦА КОНТАКТОВ ===== */
+.contacts-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+    .contacts-container h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 48px;
+        color: #3f5e3f;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+.contact-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.contact-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #3f5e3f;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.contact-card p {
+    font-family: 'Roboto', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.contact-card a {
+    color: #b85c1a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+    .contact-card a:hover {
+        text-decoration: underline;
+    }
+
+.map-container {
+    margin-top: 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .contacts-grid {
+        gap: 20px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .contacts-container h1 {
+        font-size: 36px;
+    }
+}
+
+
+/* ===== СТРАНИЦА ОСНОВНЫЕ "О ФЕРМЕ" ===== */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fef9f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Карточки для страницы "О ферме" */
+.about-card {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.about-card__title {
+    background: linear-gradient(135deg, #3f5e3f 0%, #2c452c 100%);
+    color: white;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.about-card__content {
+    padding: 30px;
+}
+
+/* Контейнер для текста и изображения */
+.about-flex-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.about-text-content {
+    flex: 2;
+    min-width: 250px;
+}
+
+    .about-text-content h3 {
+        color: #b85c1a;
+        margin-bottom: 15px;
+    }
+
+.about-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+}
+
+    .about-list li {
+        padding-left: 28px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+        .about-list li::before {
+            content: "🍓";
+            position: absolute;
+            left: 0;
+        }
+
+.about-image-right {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.rounded-square-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+    .rounded-square-img:hover {
+        transform: scale(1.03);
+    }
+
+/* Ягоды */
+.berries-showcase {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.berry-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    padding: 20px;
+    background: #fef9f0;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+    .berry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+.berry-image {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 15px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.berry-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.berry-name {
+    font-size: 1.6rem;
+    color: #3f5e3f;
+    margin: 10px 0 5px;
+    font-weight: 600;
+}
+
+.berry-desc {
+    font-size: 1.2 rem;
+    color: #666;
+}
+
+.about-berries__note {
+    background: #f9f4e8;
+    padding: 20px;
+    border-radius: 16px;
+    border-left: 4px solid #b85c1a;
+}
+
+/* Двухколоночная сетка */
+.about-two-columns {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+    .about-column h3 {
+        color: #b85c1a;
+        margin-bottom: 15px;
+    }
+
+.about-list--inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .about-list--inline li {
+        margin-bottom: 0;
+    }
+
+/* ===== СЕКЦИИ С ИЗОБРАЖЕНИЯМИ И ТЕКСТА НА ОДНОЙ ГОРИЗОНТАЛЕ ===== */
+.feature-card {
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+.feature-content {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card.reverse .feature-content {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+    min-width: 280px;
+}
+
+.feature-title {
+    font-size: 2 rem;
+    color: #2c5e2e;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+    .feature-list li {
+        padding-left: 28px;
+        margin-bottom: 10px;
+        position: relative;
+    }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+.feature-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+    .feature-btn:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+    }
+
+.feature-image {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.feature-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+    .feature-img:hover {
+        transform: scale(1.02);
+    }
+
+.processing-note {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    background: #f9f4e8;
+    border-radius: 12px;
+    font-style: italic;
+    color: #666;
+}
+
+/* ===== СТРАНИЦА "ВАКАНСИИ" ===== */
+.jobs-header {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+    .jobs-header h1 {
+        font-size: 48px;
+        font-family: 'Playfair Display', serif;
+        color: #2c5e2e;
+        margin-bottom: 0.5rem;
+    }
+
+.jobs-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.job-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+}
+
+    .job-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .job-card h2 {
+        color: #2c5e2e;
+        margin-bottom: 0.5rem;
+    }
+
+.job-salary {
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.job-description {
+    margin-bottom: 1rem;
+}
+
+.job-requirements h4 {
+    margin-bottom: 0.5rem;
+}
+
+.job-requirements ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-apply {
+    display: inline-block;
+    background-color: #2c5e2e;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+    .btn-apply:hover {
+        background-color: #1e3a1f;
+    }
+
+
+
+/* ===== АДАПТИВНОСТЬ (ЕДИНЫЙ БЛОК) ===== */
+@media (max-width: 768px) {
+    .about-card__title {
+        font-size: 1.5rem;
+        padding: 15px 20px;
+    }
+
+    .about-card__content {
+        padding: 20px;
+    }
+
+    .about-flex-container {
+        flex-direction: column;
+    }
+
+    .about-image-right {
+        order: -1;
+    }
+
+    .berries-showcase {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .berry-card {
+        max-width: 280px;
+    }
+
+    .about-two-columns {
+        flex-direction: column;
+    }
+
+    .feature-content {
+        flex-direction: column !important;
+        padding: 20px;
+        gap: 1.5rem;
+    }
+
+    .feature-text {
+        text-align: center;
+    }
+
+    .feature-list {
+        text-align: left;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .feature-img {
+        max-width: 280px;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+
 }
