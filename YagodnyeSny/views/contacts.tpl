@@ -37,9 +37,7 @@
                 src="https://yandex.ru/map-widget/v1/?um=constructor%3A1a2b3c4d5e6f7g8h9i0j&source=constructor" 
                 width="100%" 
                 height="400" 
-                frameborder="0"
-                style="border:0; display: block;"
-                allowfullscreen>
+                style="border:0; display: block;">
             </iframe>
         </div>
     </div>

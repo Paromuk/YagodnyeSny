@@ -44,6 +44,16 @@ def contacts():
         'base': template('contacts')
     }
 
+@route('/partners')
+@view('layout')
+def partners():
+    return {
+        'title': 'Партнёры',
+        'active_page': 'partners',
+        'year': datetime.now().year,
+        'base': template('partners')
+    }
+
 @route('/static/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath, root='./static')

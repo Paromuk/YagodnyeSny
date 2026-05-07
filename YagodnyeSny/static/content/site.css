@@ -185,9 +185,6 @@ input[type="checkbox"].input-validation-error {
     background-color: #b85c1a;
 }
 
-.navbar-toggle .icon-bar {
-    background-color: #ffffff;
-}
 
 .navbar-toggle:hover {
     background-color: rgba(255,255,240,0.1) !important;
