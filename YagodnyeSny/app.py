@@ -1,6 +1,7 @@
 ﻿import bottle
 import os
 from bottle import route, run, view, template, static_file
+from partners_manager import load_partners
 from datetime import datetime
 
 @route('/')
@@ -47,11 +48,18 @@ def contacts():
 @route('/partners')
 @view('layout')
 def partners():
+    partners_list = load_partners()
     return {
         'title': 'Партнёры',
         'active_page': 'partners',
-        'year': datetime.now().year,
-        'base': template('partners')
+        'year': 2026,
+        'base': template('partners', 
+                       partners_list=partners_list,
+                       author='',
+                       description='',
+                       phone='',
+                       date='',
+                       error=None)
     }
 
 @route('/static/<filepath:path>')
