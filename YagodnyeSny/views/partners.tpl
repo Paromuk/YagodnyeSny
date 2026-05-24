@@ -1,6 +1,18 @@
 ﻿<div class="container partners-container">
     <h1>Партнёрские компании</h1>
     
+    <!-- Сообщение об успехе -->
+    % if success:
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <strong>Успех!</strong> {{ success }}
+                <button type="button" class="close" data-dismiss="alert">x</button>
+            </div>
+        </div>
+    </div>
+    % end
+
     <!-- Глобальная ошибка -->
     % if error:
     <div class="row">

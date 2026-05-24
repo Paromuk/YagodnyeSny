@@ -1,6 +1,6 @@
 ﻿import bottle
 import os
-from bottle import route, run, view, template, static_file, request, HTTPResponse
+from bottle import route, run, view, template, static_file, request, redirect
 from partners_manager import load_partners, add_partner, validate_phone, validate_date
 from datetime import datetime
 import re
@@ -65,6 +65,7 @@ def partners():
                        phone='',
                        date='',
                        error=None,
+                       success=None,
                        field_errors={})
     }
 
@@ -125,31 +126,32 @@ def add_partner_handler():
     partners_list = load_partners()
     
     if field_errors:
-        return render_partners_page(
-            partners_list=partners_list,
-            author=author,
-            description=description,
-            phone=phone,
-            date=date,
-            error="Пожалуйста, исправьте ошибки в форме",
-            field_errors=field_errors
-        )
-    
-    add_partner(author, description, phone, date)
-    raise HTTPResponse(status=303, headers={'Location': '/partners'})
+        content = template('partners', 
+                          partners_list=partners_list,
+                          author=author,
+                          description=description,
+                          phone=phone,
+                          date=date,
+                          error="Пожалуйста, исправьте ошибки в форме",
+                          success=None,
+                          field_errors=field_errors)
+        return template('layout',
+                       title='Партнёры',
+                       active_page='partners',
+                       year=2026,
+                       base=content)
 
-def render_partners_page(partners_list, author='', description='', phone='', date='', error=None, field_errors=None):
-    """Вспомогательная функция для рендера страницы партнёров с layout"""
-    if field_errors is None:
-        field_errors = {}
+    add_partner(author, description, phone, date)
+    partners_list = load_partners()
     content = template('partners', 
                       partners_list=partners_list,
-                      author=author,
-                      description=description,
-                      phone=phone,
-                      date=date,
-                      error=error,
-                      field_errors=field_errors)
+                      author='',
+                      description='',
+                      phone='',
+                      date='',
+                      error=None,
+                      success="Партнёр успешно добавлен!",
+                      field_errors={})
     return template('layout',
                    title='Партнёры',
                    active_page='partners',

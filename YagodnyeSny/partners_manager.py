@@ -39,7 +39,7 @@ def add_partner(author, description, phone, date):
         'author': author.strip(),
         'description': description.strip(),
         'phone': phone.strip(),
-        'date': date
+        'date': date.strip()
     }
     partners.insert(0, new_partner) #новые записи - в начало списка
     save_partners(partners)
