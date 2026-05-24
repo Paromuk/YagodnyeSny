@@ -30,10 +30,28 @@ def validate_date(date_str):
     except ValueError:
         return False
 
+def check_duplicate_author(author, exclude_id=None):
+    """Проверка, существует ли партнёр с таким названием"""
+    partners = load_partners()
+    for partner in partners:
+        if partner['author'].lower() == author.lower():
+            if exclude_id is None or partner['id'] != exclude_id:
+                return True, partner['author']
+    return False, None
+
+def check_duplicate_phone(phone, exclude_id=None):
+    """Проверка, существует ли партнёр с таким телефоном"""
+    partners = load_partners()
+    for partner in partners:
+        if partner['phone'] == phone:
+            if exclude_id is None or partner['id'] != exclude_id:
+                return True, partner['author']
+    return False, None
+
 def add_partner(author, description, phone, date):
     """Добавление нового партнёра в список"""
     partners = load_partners()
-    new_id = max([p['id'] for p in partners], default=0) + 1 #генерация нового id
+    new_id = max([p['id'] for p in partners], default=0) + 1
     new_partner = {
         'id': new_id,
         'author': author.strip(),
@@ -41,6 +59,6 @@ def add_partner(author, description, phone, date):
         'phone': phone.strip(),
         'date': date.strip()
     }
-    partners.insert(0, new_partner) #новые записи - в начало списка
+    partners.insert(0, new_partner)
     save_partners(partners)
     return new_partner

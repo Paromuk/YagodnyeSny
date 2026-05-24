@@ -1,7 +1,7 @@
 ﻿import bottle
 import os
 from bottle import route, run, view, template, static_file, request, redirect
-from partners_manager import load_partners, add_partner, validate_phone, validate_date
+from partners_manager import load_partners, add_partner, validate_phone, validate_date, check_duplicate_author, check_duplicate_phone
 from datetime import datetime
 import re
 
@@ -125,6 +125,18 @@ def add_partner_handler():
     
     partners_list = load_partners()
     
+    # Проверка на дубикаты (если нет ошибок валидации) 
+    if not field_errors:
+        # Проверка: существует ли партнёр с таким названием
+        exists, existing_author = check_duplicate_author(author)
+        if exists:
+            field_errors['author'] = f'Партнёр "{existing_author}" уже существует'
+        
+        # Проверка: существует ли партнёр с таким телефоном
+        exists, existing_author = check_duplicate_phone(phone)
+        if exists:
+            field_errors['phone'] = f'Номер телефона уже прикреплён к партнёру "{existing_author}"'
+
     if field_errors:
         content = template('partners', 
                           partners_list=partners_list,
