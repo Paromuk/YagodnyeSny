@@ -1,36 +1,57 @@
 ﻿<div class="container partners-container">
     <h1>Партнёрские компании</h1>
     
+    <!-- Глобальная ошибка -->
+    % if error:
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <strong>Ошибка:</strong> {{ error }}
+                <button type="button" class="close" data-dismiss="alert">x</button>
+            </div>
+        </div>
+    </div>
+    % end
+    
     <!-- Форма добавления -->
     <div class="partner-form-card">
-        <h2>📝Предложить сотрудничество</h2>
+        <h2>Предложить сотрудничество</h2>
         <form action="/add_partner" method="post">
             <div class="form-row">
                 <div class="form-group">
                     <label>Наименование компании *</label>
-                    <input type="text" name="author" value="{{ author or '' }}" required>
+                    <input type="text" name="author" value="{{ author or '' }}">
+                    % if field_errors.get('author'):
+                    <div class="field-error">{{ field_errors['author'] }}</div>
+                    % end
                 </div>
                 <div class="form-group">
-                    <label>Телефон *</label>
-                    <input type="text" name="phone" value="{{ phone or '' }}" placeholder="+79123456789" required>
+                    <label>Телефон * (+71234567890)</label>
+                    <input type="text" name="phone" value="{{ phone or '' }}" placeholder="+79123456789">
+                    % if field_errors.get('phone'):
+                    <div class="field-error">{{ field_errors['phone'] }}</div>
+                    % end
                 </div>
                 <div class="form-group">
                     <label>Дата *</label>
-                    <input type="date" name="date" value="{{ date or '' }}" required>
+                    <input type="date" name="date" value="{{ date or '' }}">
+                    % if field_errors.get('date'):
+                    <div class="field-error">{{ field_errors['date'] }}</div>
+                    % end
                 </div>
             </div>
             <div class="form-group">
                 <label>Описание сотрудничества *</label>
-                <textarea name="description" rows="3" required>{{ description or '' }}</textarea>
+                <textarea name="description" rows="3">{{ description or '' }}</textarea>
+                % if field_errors.get('description'):
+                <div class="field-error">{{ field_errors['description'] }}</div>
+                % end
             </div>
             <button type="submit" class="btn-primary">Разместить →</button>
         </form>
-        % if error:
-            <div class="error-message">{{ error }}</div>
-        % end
     </div>
 
-    <!-- Список партнёров (горизонтальные карточки) -->
+    <!-- Список партнёров -->
     <div class="partners-list">
         <h2>Наши партнёры</h2>
         <div class="partners-grid">
