@@ -86,6 +86,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\layout.tpl" />
+    <Content Include="views\novelties.tpl">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
