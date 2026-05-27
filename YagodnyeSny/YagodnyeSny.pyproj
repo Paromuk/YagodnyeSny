@@ -31,12 +31,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
+    <Compile Include="logic_form\novelties.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="routes.py" />
     <Compile Include="test\test_novelties.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="logic_form\" />
     <Folder Include="test\" />
     <Folder Include="static\" />
     <Folder Include="static\content\" />
