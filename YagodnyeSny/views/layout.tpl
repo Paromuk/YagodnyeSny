@@ -49,6 +49,8 @@
                         <a href="/jobs">Вакансии</a></li>
                     <li {{ 'class="active"' if active_page == 'contacts' else '' }}>
                         <a href="/contacts">Контакты</a></li>
+                    <li {{ 'class="active"' if active_page == 'novelties' else '' }}>
+                        <a href="/novelties">Новинки</a></li>
                 </ul>
             </div>
         </div>
