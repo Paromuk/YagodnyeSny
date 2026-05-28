@@ -4,18 +4,47 @@ import os
 import sys
 from bottle import route, run, view, template, static_file, request
 from datetime import datetime, timedelta
+from urllib.parse import unquote_plus
 
-# ПРЯМОЙ импорт novelties (без добавления пути)
-# Так как novelties.py в папке static/JSON, нужно указать полный путь
 import importlib.util
 
-# Загружаем novelties из папки static/JSON
+
 spec = importlib.util.spec_from_file_location(
     "novelties", 
-    os.path.join(os.path.dirname(__file__), 'static', 'JSON', 'novelties.py')
+    os.path.join(os.path.dirname(__file__), 'logic_form', 'novelties.py')
 )
 novelties = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(novelties)
+
+
+def get_decoded_form_data():
+    """Правильно декодирует данные формы из UTF-8, заменяя + на пробелы"""
+    if request.method != 'POST':
+        return {}
+    
+    result = {}
+    
+    # Получаем сырые данные
+    raw_body = request.body.read()
+    
+    # Декодируем в UTF-8
+    try:
+        body_str = raw_body.decode('utf-8')
+    except UnicodeDecodeError:
+        try:
+            body_str = raw_body.decode('cp1251')
+        except:
+            body_str = raw_body.decode('latin1')
+    
+    # Разбираем параметры
+    if body_str:
+        for item in body_str.split('&'):
+            if '=' in item:
+                key, value = item.split('=', 1)
+                decoded_value = unquote_plus(value, encoding='utf-8', errors='replace')
+                result[key] = decoded_value
+    
+    return result
 
 
 @route('/')
@@ -71,10 +100,13 @@ def novelties_page():
     novelties_list = novelties.load_novelties()
     
     if request.method == 'POST':
-        author = request.forms.get('author', '')
-        title = request.forms.get('title', '')
-        description = request.forms.get('description', '')
-        date_str = request.forms.get('date', '')
+        # Получаем правильно декодированные данные формы
+        decoded_data = get_decoded_form_data()
+        
+        author = decoded_data.get('author', '')
+        title = decoded_data.get('title', '')
+        description = decoded_data.get('description', '')
+        date_str = decoded_data.get('date', '')
         
         form_data = {
             'author': author,
@@ -96,16 +128,16 @@ def novelties_page():
         if not valid: errors['date'] = err
         
         if not errors:
-            result, err = novelties.add_novelty(author, title, description, date_str)
+            result, msg = novelties.add_novelty(author, title, description, date_str)
             if result:
-                success_message = "Novelty successfully added!"
+                success_message = msg
                 form_data = {}
                 novelties_list = novelties.load_novelties()
             else:
-                errors['general'] = err
+                errors['general'] = msg
     
     return {
-        'title': 'Novelties',
+        'title': 'Новинки',
         'active_page': 'novelties',
         'year': datetime.now().year,
         'base': template('novelties', 
