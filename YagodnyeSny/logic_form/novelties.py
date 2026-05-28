@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 import os
 import re
@@ -9,25 +8,23 @@ DATA_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path
 
 
 def validate_author(author):
-    """Валидация автора: буквы, цифры (до 4), пробелы, только . знак"""
+    """Валидация автора: буквы, цифры (до 4), пробелы, максимум 1 точка"""
     if not author or len(author.strip()) < 2:
-        return False, "Author name must contain at least 2 characters"
+        return False, "Имя автора должно содержать не менее 2 символов"
     if len(author.strip()) > 50:
-        return False, "Author name must not exceed 50 characters"
+        return False, "Имя автора не должно превышать 50 символов"
     
-    # Подсчитываем количество цифр
     digit_count = sum(1 for char in author if char.isdigit())
     if digit_count > 4:
-        return False, "Author name can contain no more than 4 digits"
+        return False, "Имя автора может содержать не более 4 цифр"
     
-    # Разрешены: буквы, цифры, пробелы, точка (.)
+    dot_count = author.count('.')
+    if dot_count > 1:
+        return False, "Имя автора может содержать не более одной точки (.)"
+    
     pattern = r'^[a-zA-Zа-яА-ЯёЁ0-9\s\.]+$'
     if not re.match(pattern, author.strip()):
-        return False, "Author name can only contain letters, digits (max 4), spaces and dots (.)"
-    
-    # Запрещаем спецсимволы подряд
-    if re.search(r'[^a-zA-Zа-яА-ЯёЁ0-9\s\.]', author):
-        return False, "Author name cannot contain special characters like @#$%^&*()"
+        return False, "Имя автора может содержать только буквы, цифры (не более 4), пробелы и точку (.)"
     
     return True, ""
 
@@ -35,21 +32,18 @@ def validate_author(author):
 def validate_title(title):
     """Валидация названия: буквы, цифры, пробелы, знаки . , ! ?"""
     if not title or len(title.strip()) < 3:
-        return False, "Title must contain at least 3 characters"
+        return False, "Название должно содержать не менее 3 символов"
     if len(title.strip()) > 100:
-        return False, "Title must not exceed 100 characters"
+        return False, "Название не должно превышать 100 символов"
     
-    # Проверка, что название не состоит только из цифр
     if re.match(r'^\d+$', title.strip()):
-        return False, "Title cannot consist only of digits"
+        return False, "Название не может состоять только из цифр"
     
-    # Запрещаем недопустимые символы (разрешены: буквы, цифры, пробелы, . , ! ?)
     if re.search(r'[^a-zA-Zа-яА-ЯёЁ0-9\s\.\,\!\\?]', title):
-        return False, "Title can only contain letters, digits, spaces and punctuation (. , ! ?)"
+        return False, "Название может содержать только буквы, цифры, пробелы и знаки препинания (. , ! ?)"
     
-    # Запрещаем повторяющиеся спецсимволы подряд (например: !! ,,, ...)
     if re.search(r'([\.\,\!\\?])\1{2,}', title):
-        return False, "Title cannot have repeating punctuation marks (e.g., ... ,,, !!!)"
+        return False, "Название не может содержать повторяющиеся знаки препинания (например: ... ,,, !!!)"
     
     return True, ""
 
@@ -57,43 +51,53 @@ def validate_title(title):
 def validate_description(description):
     """Валидация описания: буквы, цифры, пробелы, знаки . , ! ? и перенос строки"""
     if not description or len(description.strip()) < 10:
-        return False, "Description must contain at least 10 characters"
+        return False, "Описание должно содержать не менее 10 символов"
     if len(description.strip()) > 500:
-        return False, "Description must not exceed 500 characters"
+        return False, "Описание не должно превышать 500 символов"
     
-    # Проверка, что описание не состоит только из цифр и пробелов
     if re.match(r'^[\d\s\.\,\!\\?]+$', description.strip()):
-        return False, "Description cannot consist only of digits and punctuation"
+        return False, "Описание не может состоять только из цифр и знаков препинания"
     
-    # Разрешены: буквы, цифры, пробелы, . , ! ? и перенос строки
     if re.search(r'[^a-zA-Zа-яА-ЯёЁ0-9\s\.\,\!\\?\n]', description):
-        return False, "Description can only contain letters, digits, spaces, punctuation (. , ! ?) and line breaks"
+        return False, "Описание может содержать только буквы, цифры, пробелы, знаки препинания (. , ! ?) и переносы строк"
     
-    # Запрещаем повторяющиеся спецсимволы подряд (например: ..... ,,,, !!!)
     if re.search(r'([\.\,\!\\?])\1{2,}', description):
-        return False, "Description cannot have repeating punctuation marks (e.g., ... ,,, !!!)"
+        return False, "Описание не может содержать повторяющиеся знаки препинания (например: ... ,,, !!!)"
     
     return True, ""
 
 
 def validate_date(date_str):
-    """Валидация даты: не может быть меньше текущей и больше текущей даты"""
+    """Валидация даты: не может быть раньше сегодняшнего дня и не позже чем через 5 лет"""
     if not date_str:
-        return False, "Date field is required"
+        return False, "Поле 'Дата' обязательно для заполнения"
     try:
         date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()
         current_date = datetime.now().date()
         
         if date_obj < current_date:
-            return False, f"Date cannot be earlier than today ({current_date.strftime('%d.%m.%Y')})"
+            return False, f"Дата не может быть раньше сегодняшнего дня ({current_date.strftime('%d.%m.%Y')})"
         
         max_future_date = current_date.replace(year=current_date.year + 5)
         if date_obj > max_future_date:
-            return False, f"Date cannot be later than 5 years from now ({max_future_date.strftime('%d.%m.%Y')})"
+            return False, f"Дата не может быть позже чем через 5 лет ({max_future_date.strftime('%d.%m.%Y')})"
         
         return True, ""
     except ValueError:
-        return False, "Invalid date format. Use YYYY-MM-DD"
+        return False, "Неверный формат даты. Используйте ГГГГ-ММ-ДД"
+
+
+def check_duplicate(author, title, description):
+    """Проверка на дубликаты"""
+    novelties_list = load_novelties()
+    
+    for item in novelties_list:
+        if (item.get('author', '').lower() == author.lower() and
+            item.get('title', '').lower() == title.lower() and
+            item.get('description', '').lower() == description.lower()):
+            return False, "Такая новинка уже существует! Вы не можете добавить точно такую же запись."
+    
+    return True, ""
 
 
 def load_novelties():
@@ -111,7 +115,6 @@ def load_novelties():
                     except:
                         item['date_formatted'] = item['date_added']
             
-            # Сортировка: сначала по дате (новые сверху), затем по ID (новые сверху)
             data.sort(key=lambda x: (x.get('date_added', ''), x.get('id', 0)), reverse=True)
             return data
     except (json.JSONDecodeError, IOError):
@@ -124,7 +127,7 @@ def save_novelties(novelties_list):
         with open(DATA_FILE, 'w', encoding='utf-8') as f:
             json.dump(novelties_list, f, ensure_ascii=False, indent=2)
     except Exception as e:
-        print(f"Error saving: {e}")
+        print(f"Ошибка сохранения: {e}")
 
 
 def add_novelty(author, title, description, date_added):
@@ -145,6 +148,10 @@ def add_novelty(author, title, description, date_added):
     if not is_valid:
         return None, error
     
+    is_valid, error = check_duplicate(author, title, description)
+    if not is_valid:
+        return None, error
+    
     novelties_list = load_novelties()
     new_id = max([n.get('id', 0) for n in novelties_list], default=0) + 1
     
@@ -153,12 +160,11 @@ def add_novelty(author, title, description, date_added):
         'author': author.strip(),
         'title': title.strip(),
         'description': description.strip(),
-        'date_added': date_added,
-        'created_at': datetime.now().isoformat()
+        'date_added': date_added
     }
     
     novelties_list.append(novelty)
     novelties_list.sort(key=lambda x: (x.get('date_added', ''), x.get('id', 0)), reverse=True)
     save_novelties(novelties_list)
     
-    return novelty, None
+    return novelty, "Новинка успешно добавлена!"
